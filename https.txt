@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  <IfModule mod_ssl.c>
+    <Location /sae23>
+      RewriteEngine on
+      RewriteCond %{HTTPS} !^on$ [NC]
+      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
+    </Location>
+  </IfModule>
+</IfModule>
+
