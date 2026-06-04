@@ -2,10 +2,10 @@
 -- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mer 03 Juin 2026 à 15:56
--- Version du serveur :  5.6.20
--- Version de PHP :  5.5.15
+-- Host:  localhost
+-- Generated on:  Wed Jun 03 2026 at 15:56
+-- Server version:  5.6.20
+-- PHP Version:  5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `sae23`
+-- Database:  `sae23`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Administration`
+-- Table structure for table `Administration`
 --
 
 CREATE TABLE IF NOT EXISTS `Administration` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `Administration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Administration`
+-- Dumping data for table `Administration`
 --
 
 INSERT INTO `Administration` (`login`, `mdp`) VALUES
@@ -41,7 +41,7 @@ INSERT INTO `Administration` (`login`, `mdp`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `batiment`
+-- Table structure for table `batiment`
 --
 
 CREATE TABLE IF NOT EXISTS `batiment` (
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `batiment` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `capteur`
+-- Table structure for table `capteur`
 --
 
 CREATE TABLE IF NOT EXISTS `capteur` (
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `capteur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mesure`
+-- Table structure for table `mesure`
 --
 
 CREATE TABLE IF NOT EXISTS `mesure` (
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `mesure` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `salle`
+-- Table structure for table `salle`
 --
 
 CREATE TABLE IF NOT EXISTS `salle` (
@@ -92,51 +92,51 @@ CREATE TABLE IF NOT EXISTS `salle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `batiment`
+-- Indexes for table `batiment`
 --
 ALTER TABLE `batiment`
  ADD PRIMARY KEY (`ID_bat`), ADD UNIQUE KEY `ID` (`ID_bat`);
 
 --
--- Index pour la table `capteur`
+-- Indexes for table `capteur`
 --
 ALTER TABLE `capteur`
  ADD PRIMARY KEY (`nom_capteur`), ADD KEY `nom_salle` (`nom_salle`);
 
 --
--- Index pour la table `mesure`
+-- Indexes for table `mesure`
 --
 ALTER TABLE `mesure`
  ADD PRIMARY KEY (`ID_mesure`), ADD KEY `nom_capteur` (`nom_capteur`);
 
 --
--- Index pour la table `salle`
+-- Indexes for table `salle`
 --
 ALTER TABLE `salle`
  ADD PRIMARY KEY (`nom_salle`), ADD KEY `ID` (`ID`);
 
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `batiment`
+-- Constraints for table `batiment`
 --
 ALTER TABLE `batiment`
 ADD CONSTRAINT `batiment_ibfk_1` FOREIGN KEY (`ID_bat`) REFERENCES `salle` (`ID`);
 
 --
--- Contraintes pour la table `capteur`
+-- Constraints for table `capteur`
 --
 ALTER TABLE `capteur`
 ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`nom_capteur`) REFERENCES `mesure` (`nom_capteur`);
 
 --
--- Contraintes pour la table `salle`
+-- Constraints for table `salle`
 --
 ALTER TABLE `salle`
 ADD CONSTRAINT `salle_ibfk_1` FOREIGN KEY (`nom_salle`) REFERENCES `capteur` (`nom_salle`);
