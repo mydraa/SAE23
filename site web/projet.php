@@ -37,19 +37,24 @@ session_start();
         <div class="card">
             <h2>Outils collaboratifs</h2>
             <img src="images/github.png" alt="GitHub" style="max-width:100%; margin-bottom:10px; border:1px solid #ccc;"><br>
-            <img src="images/capture.png" alt="Capture Collaborative" style="max-width:100%; border:1px solid #ccc;">
+            <img src="images/drive.png" alt="Google Drive Collaboratif" style="max-width:100%; border:1px solid #ccc;">
         </div>
         <div class="card">
             <h2>Synthèse personnelle</h2>
-            <p>[Détaillez ici le travail de chaque membre du groupe]</p>
+            <ul>
+                <li><strong>Alexandre M :</strong> S'est principalement occupé de la mise en place de l'infrastructure Docker (déploiement de Node-RED, InfluxDB et Grafana). Il a également participé à l'élaboration du code de récupération des données et a assuré la gestion continue des versions sur GitHub.</li>
+                <li><strong>Lucas M :</strong> A pris en charge la création et la configuration de la machine virtuelle. Il a résolu plusieurs bugs complexes sur Node-RED, créé la base de données, configuré les tableaux de bord Grafana et activement contribué aux dépôts sur GitHub.</li>
+                <li><strong>Morgan G :</strong> S'est concentré sur la partie développement avec la conception intégrale du site web dynamique en PHP, et a mis en place l'automatisation de la collecte des données via les tâches planifiées (<code>crontab</code>).</li>
+                <li><strong>Alexandre C :</strong> A participé à la création de la base de données, au débogage compliqué du flux Node-RED, et a posé les bases du code source pour la récupération des informations MQTT.</li>
+            </ul>
         </div>
         <div class="card">
             <h2>Problèmes rencontrés & Solutions proposées</h2>
-            <p>[Décrivez ici vos problématiques (SSH, Docker, PHP) et comment vous les avez résolues]</p>
+            <p>L'un des défis majeurs de ce projet a été la prise en main et la configuration de Node-RED. Nous avons rencontré pas mal de difficultés pour extraire, filtrer et traiter correctement les trames de données brutes provenant du serveur MQTT de l'IUT. Après de nombreux tests et des séances de débogage en équipe, nous avons fini par trouver la bonne logique pour isoler les valeurs utiles et les envoyer proprement vers nos autres services.</p>
         </div>
         <div class="card">
             <h2>Conclusion</h2>
-            <p>[Conclusion sur la satisfaction du cahier des charges]</p>
+            <p>En conclusion, cette SAÉ 23 a été très formatrice. Elle nous a permis de relier différentes technologies vues en cours (Réseau, Base de données, Développement Web et Linux) pour construire un vrai système IoT de A à Z. Malgré quelques obstacles techniques assez prenants, la bonne répartition du travail en équipe nous a permis de remplir les exigences du cahier des charges et d'aboutir à une plateforme fonctionnelle.</p>
         </div>
     </div>
 </body>
