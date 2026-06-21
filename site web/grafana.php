@@ -63,7 +63,6 @@ require 'db.php';
     </nav>
     
     <div class="container">
-        <p>Supervision en temps réel des salles via l'intégration InfluxDB & Grafana.</p>
         
         <div class="grafana-section">
             <h2>Salle E208</h2>
@@ -89,13 +88,6 @@ require 'db.php';
             </div>
         </div>
         
-        <div class="card" style="margin-top: 40px; background:rgba(255,255,255,0.05); padding:1.5rem; border:1px dashed #F05A28;">
-            <h3 style="color:#F05A28; margin-top:0;">ℹ️ Comment afficher vos vrais graphiques ?</h3>
-            <p>1. Allez sur votre interface Grafana sur le port 3000.</p>
-            <p>2. Cliquez sur le titre d'un graphique (ex: Température E208) puis sur <strong>Share</strong>.</p>
-            <p>3. Allez dans l'onglet <strong>Embed</strong> et copiez l'URL contenue dans le <code>src="..."</code>.</p>
-            <p>4. Ouvrez le fichier <code>site web/grafana.php</code> et remplacez les <code>src</code> des 4 iframes par vos propres liens !</p>
-        </div>
     </div>
 </body>
 </html>

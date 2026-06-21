@@ -49,8 +49,8 @@ require 'db.php';
                 
                 echo "<div class='card'>";
                 echo "<h3>" . htmlspecialchars($row['nom_salle']) . " - " . htmlspecialchars($row['type']) . "</h3>";
-                echo "<div class='flex-between' style='margin-top: 1rem;'>";
-                echo "<span class='stat-value'>" . $val . "</span>";
+                echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;'>";
+                echo "<span class='stat-value' style='font-weight: bold;'>" . $val . "</span>";
                 echo "<span style='color:var(--text-muted); font-size: 0.9rem;'>Heure: " . $time . "</span>";
                 echo "</div>";
                 echo "</div>";
