@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $host = 'localhost';
 $user = 'root';
 $pass = 'passroot';
@@ -13,3 +13,4 @@ try {
     exit('Error connecting to database');
 }
 ?>
+

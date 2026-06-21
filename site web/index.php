@@ -17,7 +17,7 @@ require 'db.php';
             <li><a href="gestion.php">Gestionnaire</a></li>
             <li><a href="administration.php">Administration</a></li>
             <li><a href="projet.php">Gestion de projet</a></li>
-            <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000" target="_blank" style="color:#F05A28">Grafana (Live)</a></li>
+            <li><a href="grafana.php" style="color:#F05A28">Grafana (Live)</a></li>
         </ul>
         <?php if(isset($_SESSION['login'])): ?>
             <div>
@@ -64,3 +64,4 @@ require 'db.php';
     </div>
 </body>
 </html>
+
