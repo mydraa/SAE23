@@ -69,11 +69,10 @@ require 'db.php';
             <h2>Salle E208</h2>
             <div class="grafana-grid">
                 <div class="grafana-panel">
-                    <!-- Remplacez l'URL src par le lien d'intégration (Embed) de votre panel Grafana -->
-                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/xxxx/dashboard?orgId=1&panelId=1&theme=dark" frameborder="0"></iframe>
+                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/7872e7b2-942f-466a-b1cb-acd58f68aec4/sae23-e28094-supervision-des-salles-iot?orgId=1&panelId=3&theme=dark" frameborder="0"></iframe>
                 </div>
                 <div class="grafana-panel">
-                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/xxxx/dashboard?orgId=1&panelId=2&theme=dark" frameborder="0"></iframe>
+                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/7872e7b2-942f-466a-b1cb-acd58f68aec4/sae23-e28094-supervision-des-salles-iot?orgId=1&panelId=4&theme=dark" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
@@ -82,10 +81,10 @@ require 'db.php';
             <h2>Salle E210</h2>
             <div class="grafana-grid">
                 <div class="grafana-panel">
-                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/xxxx/dashboard?orgId=1&panelId=3&theme=dark" frameborder="0"></iframe>
+                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/7872e7b2-942f-466a-b1cb-acd58f68aec4/sae23-e28094-supervision-des-salles-iot?orgId=1&panelId=7&theme=dark" frameborder="0"></iframe>
                 </div>
                 <div class="grafana-panel">
-                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/xxxx/dashboard?orgId=1&panelId=4&theme=dark" frameborder="0"></iframe>
+                    <iframe src="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000/d-solo/7872e7b2-942f-466a-b1cb-acd58f68aec4/sae23-e28094-supervision-des-salles-iot?orgId=1&panelId=8&theme=dark" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
