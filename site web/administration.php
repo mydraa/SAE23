@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Start session and connect to database
 session_start();
 require 'db.php';
@@ -26,6 +26,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
         }
     } elseif($_POST['action'] == 'del_capteur') {
         $nom = $_POST['nom_capteur'];
+        // Thanks to ON DELETE CASCADE in the DB schema, this will also delete the measures if the schema is updated.
+        // For safety, we also explicitly delete the measures first in case the user hasn't updated the DB schema.
+        $stmt_m = mysqli_prepare($conn, "DELETE FROM mesure WHERE nom_capteur = ?");
+        mysqli_stmt_bind_param($stmt_m, "s", $nom);
+        mysqli_stmt_execute($stmt_m);
+
         $stmt = mysqli_prepare($conn, "DELETE FROM capteur WHERE nom_capteur = ?");
         mysqli_stmt_bind_param($stmt, "s", $nom);
         mysqli_stmt_execute($stmt);
@@ -74,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
             <li><a href="gestion.php">Gestionnaire</a></li>
             <li><a href="administration.php" style="color:var(--text-main)">Administration</a></li>
             <li><a href="projet.php">Gestion de projet</a></li>
+            <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000" target="_blank" style="color:#F05A28">Grafana (Live)</a></li>
         </ul>
         <div>
             <span style="color:var(--text-muted); margin-right: 15px;">Connecté: <?= htmlspecialchars($_SESSION['login']) ?></span>
@@ -125,8 +132,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
                     <input type="hidden" name="action" value="add_batiment">
                     <div class="form-group"><label>ID :</label><input type="number" name="id_bat" required></div>
                     <div class="form-group"><label>Nom :</label><input type="text" name="nom_bat" required></div>
-                    <div class="form-group"><label>Login gestionnaire :</label><input type="text" name="login_bat" required></div>
-                    <div class="form-group"><label>MDP gestionnaire :</label><input type="password" name="mdp_bat" required></div>
+                    <div class="form-group"><label>Login gestionnaire :</label><input type="text" name="login_bat" autocomplete="new-password" required></div>
+                    <div class="form-group"><label>MDP gestionnaire :</label><input type="password" name="mdp_bat" autocomplete="new-password" required></div>
                     <button type="submit">Ajouter</button>
                 </form>
             </div>
@@ -138,7 +145,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
                     <input type="hidden" name="action" value="add_salle">
                     <div class="form-group"><label>Nom :</label><input type="text" name="nom_salle" required></div>
                     <div class="form-group"><label>Type :</label><input type="text" name="type_salle" required></div>
-                    <div class="form-group"><label>Capacité :</label><input type="number" name="capacite" required></div>
+                    <div class="form-group"><label>Capacité :</label><input type="number" name="capacite" min="0" required></div>
                     <div class="form-group"><label>Bâtiment :</label><select name="id_bat_salle" required>
                         <?php
                         $res = mysqli_query($conn, "SELECT ID_bat, nom FROM batiment");

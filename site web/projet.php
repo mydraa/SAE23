@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Start session for menu logic
 session_start();
 ?>
@@ -16,7 +16,8 @@ session_start();
             <li><a href="consultation.php">Consultation</a></li>
             <li><a href="gestion.php">Gestionnaire</a></li>
             <li><a href="administration.php">Administration</a></li>
-            <li><a href="projet.php">Gestion de projet</a></li>
+            <li><a href="projet.php" style="color:var(--text-main)">Gestion de projet</a></li>
+            <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000" target="_blank" style="color:#F05A28">Grafana (Live)</a></li>
         </ul>
         <?php if(isset($_SESSION['login'])): ?>
             <div>
@@ -24,7 +25,9 @@ session_start();
                 <a href="logout.php" style="color:red">Déconnexion</a>
             </div>
         <?php else: ?>
-            <a href="login.php">Connexion</a>
+            <div>
+                <a href="login.php">Connexion</a>
+            </div>
         <?php endif; ?>
     </nav>
 

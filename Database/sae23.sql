@@ -126,20 +126,25 @@ ALTER TABLE `salle`
 --
 -- Constraints for table `batiment`
 --
-ALTER TABLE `batiment`
-ADD CONSTRAINT `batiment_ibfk_1` FOREIGN KEY (`ID_bat`) REFERENCES `salle` (`ID`);
+-- No foreign key needed here, room references building.
 
 --
 -- Constraints for table `capteur`
 --
 ALTER TABLE `capteur`
-ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`nom_capteur`) REFERENCES `mesure` (`nom_capteur`);
+ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`nom_salle`) REFERENCES `salle` (`nom_salle`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mesure`
+--
+ALTER TABLE `mesure`
+ADD CONSTRAINT `mesure_ibfk_1` FOREIGN KEY (`nom_capteur`) REFERENCES `capteur` (`nom_capteur`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `salle`
 --
 ALTER TABLE `salle`
-ADD CONSTRAINT `salle_ibfk_1` FOREIGN KEY (`nom_salle`) REFERENCES `capteur` (`nom_salle`);
+ADD CONSTRAINT `salle_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `batiment` (`ID_bat`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

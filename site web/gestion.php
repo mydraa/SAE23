@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require 'db.php';
 
@@ -27,6 +27,8 @@ $bat_nom = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['nom'];
             <li><a href="consultation.php">Consultation</a></li>
             <li><a href="gestion.php" style="color:var(--text-main)">Gestionnaire</a></li>
             <li><a href="administration.php">Administration</a></li>
+            <li><a href="projet.php">Gestion de projet</a></li>
+            <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>:3000" target="_blank" style="color:#F05A28">Grafana (Live)</a></li>
         </ul>
         <div>
             <span style="color:var(--text-muted); margin-right: 15px;">Connecté: <?= htmlspecialchars($_SESSION['login']) ?></span>
