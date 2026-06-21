@@ -32,6 +32,6 @@ while true; do
         fi
     done
     
-    echo "Attente de 30 secondes avant la prochaine collecte..."
+    echo "Waiting 30 seconds before next collection..."
     sleep 30
 done
