@@ -8,10 +8,19 @@ while true; do
     echo "$CAPTEURS" | while read -r nom_capteur salle type; do
         # Format the type string (e.g. 'temperature' or 'humidite' without uppercase or accents)
         type_fmt=$(echo "$type" | tr '[:upper:]' '[:lower:]' | sed 's/é/e/g; s/è/e/g')
-        TOPIC="student/iut/bate/etage2/$salle/$type_fmt"
+        TOPIC="sensors/AM107/by-room/$salle/data"
         
-        # Extract the value from the JSON object
-        valeur=$(timeout 10 mosquitto_sub -h "$BROKER" -p 8883 -u student -P student -t "$TOPIC" -C 1 2>/dev/null < /dev/null | jq -r 'if has("temperature") then .temperature elif has("humidity") then .humidity elif has("value") then .value else .[0].temperature end' 2>/dev/null)
+        # Fetch the JSON payload
+        JSON_DATA=$(timeout 10 mosquitto_sub -h "$BROKER" -p 8883 -u student -P student -t "$TOPIC" -C 1 2>/dev/null < /dev/null)
+        
+        # Extract the correct value depending on the sensor type
+        if [ "$type_fmt" = "temperature" ]; then
+            valeur=$(echo "$JSON_DATA" | jq -r '.[0].temperature' 2>/dev/null)
+        elif [ "$type_fmt" = "humidite" ]; then
+            valeur=$(echo "$JSON_DATA" | jq -r '.[0].humidity' 2>/dev/null)
+        else
+            valeur=$(echo "$JSON_DATA" | jq -r ".[0].$type_fmt" 2>/dev/null)
+        fi
         
         # Check if the extracted value is not empty and not "null"
         if [ ! -z "$valeur" ] && [ "$valeur" != "null" ]; then
