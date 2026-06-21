@@ -11,7 +11,7 @@ echo "$CAPTEURS" | while read -r nom_capteur salle type; do
     TOPIC="sandbox/student/iut/bate/etage2/$salle/$type_fmt"
     
     # Extract the value from the JSON object
-    valeur=$(mosquitto_sub -h "$BROKER" -p 8883 -u student -P student -t "$TOPIC" -C 1 2>/dev/null | jq -r 'if has("temperature") then .temperature elif has("humidity") then .humidity elif has("value") then .value else .[0].temperature end' 2>/dev/null)
+    valeur=$(mosquitto_sub -h "$BROKER" -p 8883 -u student -P student -t "$TOPIC" -C 1 2>/dev/null < /dev/null | jq -r 'if has("temperature") then .temperature elif has("humidity") then .humidity elif has("value") then .value else .[0].temperature end' 2>/dev/null)
     
     # Check if the extracted value is not empty and not "null"
     if [ ! -z "$valeur" ] && [ "$valeur" != "null" ]; then
