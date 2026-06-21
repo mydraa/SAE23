@@ -114,6 +114,12 @@ ALTER TABLE `mesure`
  ADD PRIMARY KEY (`ID_mesure`), ADD KEY `nom_capteur` (`nom_capteur`);
 
 --
+-- AUTO_INCREMENT for table `mesure`
+--
+ALTER TABLE `mesure`
+ MODIFY `ID_mesure` int(255) NOT NULL AUTO_INCREMENT;
+
+--
 -- Indexes for table `salle`
 --
 ALTER TABLE `salle`
