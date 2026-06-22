@@ -44,7 +44,7 @@ require 'db.php';
                     FROM capteur c";
             $res = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($res)) {
-                $val = $row['last_val'] !== null ? htmlspecialchars($row['last_val']) . " " . htmlspecialchars($row['unité']) : "Aucune donnée";
+                $val = $row['last_val'] !== null ? round($row['last_val'], 1) . " " . htmlspecialchars($row['unité']) : "Aucune donnée";
                 $time = $row['last_time'] !== null ? htmlspecialchars($row['last_time']) : "-";
                 
                 echo "<div class='card'>";

@@ -81,7 +81,7 @@ $bat_nom = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt))['nom'];
             echo "<thead><tr><th>Date</th><th>Heure</th><th>Valeur</th></tr></thead>";
             echo "<tbody>";
             while($m = mysqli_fetch_assoc($hist)) {
-                echo "<tr><td>" . htmlspecialchars($m['date']) . "</td><td>" . htmlspecialchars($m['horaire']) . "</td><td>" . htmlspecialchars($m['valeur']) . "</td></tr>";
+                echo "<tr><td>" . htmlspecialchars($m['date']) . "</td><td>" . htmlspecialchars($m['horaire']) . "</td><td>" . round($m['valeur'], 1) . "</td></tr>";
             }
             echo "</tbody></table>";
             echo "</div>";
