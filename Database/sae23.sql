@@ -78,22 +78,6 @@ CREATE TABLE IF NOT EXISTS `mesure` (
   `nom_capteur` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Insert Default Data
-INSERT INTO `Administration` (`login`, `mdp`) VALUES ('admin', 'admin');
-
-INSERT INTO `batiment` (`ID_bat`, `nom`, `login`, `mdp`) VALUES 
-(1, 'Bâtiment E', 'gest_e', 'password'),
-(2, 'Bâtiment C', 'gest_c', 'password');
-
-INSERT INTO `salle` (`nom_salle`, `type`, `capacité`, `ID`) VALUES 
-('E208', 'Salle TP', 30, 1),
-('E210', 'Salle Cours', 40, 1);
-
-INSERT INTO `capteur` (`nom_capteur`, `type`, `unité`, `nom_salle`) VALUES 
-('T_E208', 'temperature', '°C', 'E208'),
-('H_E208', 'humidite', '%', 'E208'),
-('T_E210', 'temperature', '°C', 'E210'),
-('H_E210', 'humidite', '%', 'E210');
 
 -- --------------------------------------------------------
 
@@ -172,3 +156,20 @@ ADD CONSTRAINT `salle_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `batiment` (`ID_bat`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Insert Default Data
+INSERT INTO `Administration` (`login`, `mdp`) VALUES ('admin', 'admin');
+
+INSERT INTO `batiment` (`ID_bat`, `nom`, `login`, `mdp`) VALUES 
+(1, 'Bâtiment E', 'gest_e', 'password'),
+(2, 'Bâtiment C', 'gest_c', 'password');
+
+INSERT INTO `salle` (`nom_salle`, `type`, `capacité`, `ID`) VALUES 
+('E208', 'Salle TP', 30, 1),
+('E210', 'Salle Cours', 40, 1);
+
+INSERT INTO `capteur` (`nom_capteur`, `type`, `unité`, `nom_salle`) VALUES 
+('T_E208', 'temperature', '°C', 'E208'),
+('H_E208', 'humidite', '%', 'E208'),
+('T_E210', 'temperature', '°C', 'E210'),
+('H_E210', 'humidite', '%', 'E210');
