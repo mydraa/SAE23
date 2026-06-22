@@ -71,12 +71,32 @@ CREATE TABLE IF NOT EXISTS `capteur` (
 --
 
 CREATE TABLE IF NOT EXISTS `mesure` (
-  `ID_mesure` int(255) NOT NULL,
-  `date` date NOT NULL,
-  `horaire` time NOT NULL,
-  `valeur` float NOT NULL,
-  `nom_capteur` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID_mesure` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `horaire` time DEFAULT NULL,
+  `valeur` float DEFAULT NULL,
+  `nom_capteur` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID_mesure`),
+  KEY `nom_capteur` (`nom_capteur`),
+  CONSTRAINT `mesure_ibfk_1` FOREIGN KEY (`nom_capteur`) REFERENCES `capteur` (`nom_capteur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insert Default Data
+INSERT INTO `Administration` (`login`, `mdp`) VALUES ('admin', 'admin');
+
+INSERT INTO `batiment` (`ID`, `nom`, `login`, `mdp`) VALUES 
+(1, 'Bâtiment E', 'gest_e', 'password'),
+(2, 'Bâtiment C', 'gest_c', 'password');
+
+INSERT INTO `salle` (`nom_salle`, `type`, `capacité`, `ID`) VALUES 
+('E208', 'Salle TP', 30, 1),
+('E210', 'Salle Cours', 40, 1);
+
+INSERT INTO `capteur` (`nom_capteur`, `type`, `nom_salle`) VALUES 
+('T_E208', 'temperature', 'E208'),
+('H_E208', 'humidite', 'E208'),
+('T_E210', 'temperature', 'E210'),
+('H_E210', 'humidite', 'E210');
 
 -- --------------------------------------------------------
 
